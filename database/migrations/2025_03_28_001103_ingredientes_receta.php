@@ -30,6 +30,7 @@ class IngredientesReceta extends Migration
      */
     public function down()
     {
+        
         Schema::dropIfExists('ingredientes_receta');
     }
 }
