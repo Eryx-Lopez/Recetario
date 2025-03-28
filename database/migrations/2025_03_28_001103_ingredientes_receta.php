@@ -13,14 +13,17 @@ class IngredientesReceta extends Migration
      */
     public function up()
     {
-        // Definir la clave primaria compuesta
-        $table->primary(['id_receta', 'id_ingrediente']);
-        $table->float('cantidad');
-        $table->string('unidad', 20);
+        Schema::create('ingredientes_receta', function (Blueprint $table) {
+            // Definir la clave primaria compuesta
+            $table->primary(['id_receta', 'id_ingrediente']);
+            $table->float('cantidad');
+            $table->string('unidad', 20);
 
-        // Definir las claves foráneas
-        $table->foreign('id_receta')->references('id')->on('recetas')->onDelete('cascade');
-        $table->foreign('id_ingrediente')->references('id')->on('ingredientes')->onDelete('cascade');
+            // Definir las claves foráneas
+            $table->foreign('id_receta')->references('id')->on('recetas')->onDelete('cascade');
+            $table->foreign('id_ingrediente')->references('id')->on('ingredientes')->onDelete('cascade');
+        });
+        
     }
 
     /**
@@ -30,7 +33,6 @@ class IngredientesReceta extends Migration
      */
     public function down()
     {
-        
         Schema::dropIfExists('ingredientes_receta');
     }
 }
