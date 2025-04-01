@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IngredientController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,14 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/buscar', [HomeController::class, 'buscar']);
-Route::get('/home', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home']);
+Route::get('/post',[PostController::class,'index']);
+Route::get('/post/create',[PostController::class,'create']);
+Route::get('/post/{post}',[PostController::class,'show']);
+
+//Agregar cosas
+Route::post('/post', [PostController::class, 'store']);
+
+//Para los ingredientes. Odio los ingredientes, un jodido dolor de cabeza
+Route::get('/search-ingredients', [IngredientController::class,'search']);
 

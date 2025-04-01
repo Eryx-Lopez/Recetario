@@ -14,10 +14,11 @@ class Recetas extends Migration
     public function up()
     {
         Schema::create('recetas', function (Blueprint $table) {
-            $table->id('id_receta');
+            $table->id('id_receta'); // Primary key
             $table->string('nombre', 70);
             $table->string('descripcion', 255);
             $table->text('instrucciones');
+            $table->timestamps(); // Adds 'created_at' and 'updated_at' columns
         });
     }
 
