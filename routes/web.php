@@ -18,12 +18,14 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/post',[PostController::class,'index']);
-Route::get('/post/create',[PostController::class,'create']);
+Route::get('/create',[PostController::class,'create']);
 Route::get('/post/{post}',[PostController::class,'show']);
+Route::get('/ingredientes',[IngredientController::class,'ingrediente']);
 
 //Agregar cosas
 Route::post('/post', [PostController::class, 'store']);
+Route::post('/add', [IngredientController::class, 'store']);
 
-//Para los ingredientes. Odio los ingredientes, un jodido dolor de cabeza
-Route::get('/search-ingredients', [IngredientController::class,'search']);
+
+Route::get('/add-ingredient', [IngredientController::class,'add']);
 

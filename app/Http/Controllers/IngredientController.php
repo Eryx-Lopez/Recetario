@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ingredientes as ModelsIngredientes;
+use App\Models\ingredientes;
 use Illuminate\Http\Request;
 
 class IngredientController extends Controller
 {
-    public function search(Request $request){
-        $term = $request->query('term'); //Obtener input term
-        $ingredients = ModelsIngredientes::where('nombre', 'LIKE', '%' . $term . '%')->get(['id_ingrediente', 'nombre']); //Regresa los ingredientes que hagan match
-        return response()->json($ingredients); //Devuelve un JSON, veamos pa q
+    public function ingrediente(){
+        $ingredientes = ingredientes::all();
+        return view('ingredientes.index',['ingredientes' => $ingredientes]);
+    }
+
+    public function add(){
+        return view('ingredientes.add');
+    }
+
+    public function store(Request $request)
+    {
+        // Receta
+        $ingredientes = new ingredientes();
+        $ingredientes->nombre = $request->input('nombre');
+        $ingredientes->save();
+    
+        return redirect('/ingredientes');
     }
 }

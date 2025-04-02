@@ -17,5 +17,7 @@
             </li>
         @endforeach
     </ul>
+    <a href="/create">Subir receta</a>
+    <a href="/ingredientes">Ingredientes</a>
 </body>
 </html>

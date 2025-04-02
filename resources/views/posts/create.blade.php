@@ -21,16 +21,6 @@
             <label for="instrucciones">Instrucciones</label>
             <input type="text" name="instrucciones">
 
-            <!-- AUTOCOMPLETAR INGREDIENTE (gracias copilot)-->
-            <label for="ingrediente">Ingredientes</label>
-            <input type="text" id="ingrediente-input" placeholder="Ingrese un ingrediente">
-            <ul id="lista-ingredientes"></ul>
-
-            <input type="hidden" name="ingredientes_ids[]" id="ingredientes-ids">
-
-            <label for="ingrediente_nuevo">Agregar Ingrediente</label>
-            <input type="text" name="ingrediente-nuevo" id="ingrediente-nuevo">
-
             <button type="submit">Subir receta</button>
         </form>
     <a href="/post">Regresar</a>
