@@ -29,14 +29,44 @@ class PostController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Receta
-        $recetas = new Recetas();
-        $recetas->nombre = $request->input('nombre');
-        $recetas->descripcion = $request->input('descripcion');
-        $recetas->instrucciones = $request->input('instrucciones');
-        $recetas->save();
+{
+    // Crear la receta
+    $receta = new Recetas();
+    $receta->nombre = $request->input('nombre');
+    $receta->descripcion = $request->input('descripcion');
+    $receta->instrucciones = $request->input('instrucciones');
+    $receta->save();
+
+    // Asociar los ingredientes a la receta
+    $ingredientesData = $request->input('ingredientes');
+    foreach ($ingredientesData as $ingrediente) {
+        $receta->ingredientes()->attach($ingrediente['id_ingrediente'], [
+            'cantidad' => $ingrediente['cantidad'],
+            'unidad' => $ingrediente['unidad'],
+        ]);
+    }
+
+    return redirect('/post')->with('success', '¡Receta guardada exitosamente!');
+}
+
+    public function searchRecipe(Request $request){
+        $search = $request->input('search');
+
+        $ingredientes = ingredientes::where('nombre', 'LIKE', '%' . $search . '%')->get();
+
+        if($ingredientes->isEmpty()){
+            return redirect()->back()->with('error', 'No se encontraron ingredientes que coincidan con la búsqueda.');
+        }
+
+        $recetas = collect();
+
+        foreach ($ingredientes as $ingrediente) {
+            $recetas = $recetas->merge($ingrediente->recetas);
+        }
     
-        return redirect('/post');
+        $recetas = $recetas->unique();
+
+        return view('posts.results',['recetas' => $recetas, 'ingrediente'=> $ingrediente]);
+
     }
 }

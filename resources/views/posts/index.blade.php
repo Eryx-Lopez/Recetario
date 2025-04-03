@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
+<nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/post">Ver Recetas</a></li>
+            <li><a href="/create">Subir receta</a></li>
+            <li><a href="/ingredientes">Ver Ingredientes</a></li>
+            <li><a href="/add-ingredient">Agregar un ingrediente</a></li>
+        </ul>
+    </nav>
     <h1>aqui van todos las recetas</h1>
     
     <ul>

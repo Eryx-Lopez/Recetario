@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
+<nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/post">Ver Recetas</a></li>
+            <li><a href="/create">Subir receta</a></li>
+            <li><a href="/ingredientes">Ver Ingredientes</a></li>
+            <li><a href="/add-ingredient">Agregar un ingrediente</a></li>
+        </ul>
+    </nav>
     <h1>Aqui va la receta individual</h1>
     <a href="/post">Regresar</a>
     <h1>{{$post->nombre}}</h1>

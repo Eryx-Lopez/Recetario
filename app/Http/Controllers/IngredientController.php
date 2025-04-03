@@ -25,4 +25,6 @@ class IngredientController extends Controller
     
         return redirect('/ingredientes');
     }
+
+    
 }
