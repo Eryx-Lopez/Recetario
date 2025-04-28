@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Ingredientes extends Migration
+class AddTimestampsToRecetasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class Ingredientes extends Migration
      */
     public function up()
     {
-        Schema::create('ingredientes', function (Blueprint $table){
-            $table->id('id_ingrediente');
-            $table->string('nombre', 70);
-            $table->timestamps();
+        Schema::table('recetas', function (Blueprint $table) {
+            //
         });
     }
 
@@ -27,6 +25,8 @@ class Ingredientes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredientes');
+        Schema::table('recetas', function (Blueprint $table) {
+            //
+        });
     }
 }
